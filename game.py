@@ -14,6 +14,7 @@ computer = choices[randint(0,2)]
 player = False
 pScore = 0
 cScore = 0
+cWin = False
 
 while player == False:
 	# set player to True
@@ -51,6 +52,7 @@ while player == False:
 		if computer == "Paper":
 			print("You lose!", computer, "Covers", player, "\n")
 			cScore = cScore + 1
+			cWin = True
 		else:
 			print("You win!", player, "Smashes", computer, "\n")
 			pScore = pScore + 1
@@ -59,6 +61,7 @@ while player == False:
 		if computer == "Scissors":
 			print("You lose!", computer, "Cuts", player, "\n")
 			cScore = cScore + 1
+			cWin = True
 		else:
 			print("You win!", player, "Covers", computer, "\n")
 			pScore = pScore + 1
@@ -67,6 +70,7 @@ while player == False:
 		if computer == "Rock":
 			print("You lose!", computer, "Smashes", player, "\n")
 			cScore = cScore + 1
+			cWin = True
 		else:
 			print("You win!", player, "Cuts", computer, "\n")
 			pScore = pScore + 1
@@ -77,28 +81,34 @@ while player == False:
 	#Show Score and response
 	print("Player: ", pScore, "|| Computer: ", cScore, "\n")
 	
-	if cScore - pScore >= 7:
-		print('Computer: "I am the King" \n')
-	elif cScore - pScore >= 5:
-		print('Computer: "You suck at this" \n')
-	elif cScore - pScore > 3:
-		print('Computer: "I am not even trying" \n')
-	elif cScore - pScore == 3 :
-		print('Computer: "This is easy" \n')
-	elif cScore - pScore >= 1:
-		print('Computer: "Nice! Let us go again" \n')
-	elif cScore - pScore == 0:
+	if cScore - pScore == 0:
 		print('Computer: "We are tied" \n')
-	elif cScore - pScore <= -7:
-		print('Computer: "You are the King" \n')
-	elif cScore - pScore <= -5:
-		print('Computer: "You rock at this" \n')
-	elif cScore - pScore < -3:
-		print('Computer: "You are pretty good" \n')
-	elif cScore - pScore == -3 :
-		print('Computer: "This is hard" \n')
-	elif cScore - pScore <= -1:
-		print('Computer: "Damn! Let us go again" \n')
+	elif cWin == True:
+		if cScore - pScore >= 7:
+			print('Computer: "I am the King" \n')
+		elif cScore - pScore >= 5:
+			print('Computer: "You suck at this" \n')
+		elif cScore - pScore > 3:
+			print('Computer: "I am not even trying" \n')
+		elif cScore - pScore == 3 :
+			print('Computer: "This is easy" \n')
+		elif cScore - pScore >= 1:
+			print('Computer: "Nice! Let us go again" \n')
+		else: 
+			print('Computer: "Ok you are still winning. Let us go again" \n')
+	else:		
+		if cScore - pScore <= -7:
+			print('Computer: "You are the King" \n')
+		elif cScore - pScore <= -5:
+			print('Computer: "You rock at this" \n')
+		elif cScore - pScore < -3:
+			print('Computer: "You are pretty good" \n')
+		elif cScore - pScore == -3 :
+			print('Computer: "This is hard" \n')
+		elif cScore - pScore <= -1:
+			print('Computer: "Damn! Let us go again" \n')
+		else:
+			print('Computer: "Ok but I am still winning" \n')
 
 	player = False
 	computer = choices[randint(0,2)]
