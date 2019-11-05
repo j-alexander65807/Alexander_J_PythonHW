@@ -2,7 +2,7 @@
 from random import randint
 # import time module
 import time
-
+from gameFunctions import score
 
 # Choices array
 choices = ["Rock", "Paper", "Scissors"]
@@ -15,6 +15,9 @@ player = False
 pScore = 0
 cScore = 0
 cWin = False
+
+#functions
+
 
 while player == False:
 	# set player to True
@@ -47,6 +50,7 @@ while player == False:
 	time.sleep(1)
 	if computer == player:
 		print("It's a Tie")
+		score.showScore(cWin, cScore, pScore)
 	
 	elif player == "Rock":
 		if computer == "Paper":
@@ -56,7 +60,9 @@ while player == False:
 		else:
 			print("You win!", player, "Smashes", computer, "\n")
 			pScore = pScore + 1
-
+			cWin = False
+		score.showScore(cWin, cScore, pScore)
+	
 	elif player == "Paper":
 		if computer == "Scissors":
 			print("You lose!", computer, "Cuts", player, "\n")
@@ -65,7 +71,9 @@ while player == False:
 		else:
 			print("You win!", player, "Covers", computer, "\n")
 			pScore = pScore + 1
-
+			cWin = False
+		score.showScore()
+	
 	elif player == "Scissors":
 		if computer == "Rock":
 			print("You lose!", computer, "Smashes", player, "\n")
@@ -74,41 +82,13 @@ while player == False:
 		else:
 			print("You win!", player, "Cuts", computer, "\n")
 			pScore = pScore + 1
+			cWin = False
+		score.showScore()
 	else:
 		print("That's not a valid choice")
 		
 
-	#Show Score and response
-	print("Player: ", pScore, "|| Computer: ", cScore, "\n")
 	
-	if cScore - pScore == 0:
-		print('Computer: "We are tied" \n')
-	elif cWin == True:
-		if cScore - pScore >= 7:
-			print('Computer: "I am the King" \n')
-		elif cScore - pScore >= 5:
-			print('Computer: "You suck at this" \n')
-		elif cScore - pScore > 3:
-			print('Computer: "I am not even trying" \n')
-		elif cScore - pScore == 3 :
-			print('Computer: "This is easy" \n')
-		elif cScore - pScore >= 1:
-			print('Computer: "Nice! Let us go again" \n')
-		else: 
-			print('Computer: "Ok you are still winning. Let us go again" \n')
-	else:		
-		if cScore - pScore <= -7:
-			print('Computer: "You are the King" \n')
-		elif cScore - pScore <= -5:
-			print('Computer: "You rock at this" \n')
-		elif cScore - pScore < -3:
-			print('Computer: "You are pretty good" \n')
-		elif cScore - pScore == -3 :
-			print('Computer: "This is hard" \n')
-		elif cScore - pScore <= -1:
-			print('Computer: "Damn! Let us go again" \n')
-		else:
-			print('Computer: "Ok but I am still winning" \n')
 
 	player = False
 	computer = choices[randint(0,2)]

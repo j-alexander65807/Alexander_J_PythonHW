@@ -2,7 +2,7 @@
 
 Pick your weapon and play against the computer - you'll get a virtual sting if you lose!
 
-Prerequisites: All you need is python3 to play.
+Prerequisites: All you need is [python3](https://www.google.com) to play.
 
 Clone the project, navigate to the correct directory and run the game.pv file in a Python Termonal window.
 
